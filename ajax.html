@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Request JSON Test</title>
+  <script>
+
+      // Method 1 using aync and await
+
+      const getRecipies = async () => {
+      const response = await fetch(`https://covid19.mathdro.id/api`);
+
+      const data = await response.json();
+      // console.log(data.confirmed);
+      // console.log(data.recovered);
+      // console.log(data.deaths);
+
+      document.getElementById("confirmed").innerHTML = data.confirmed.value;
+      document.getElementById("recovered").innerHTML = data.recovered.value;
+      document.getElementById("deaths").innerHTML = data.deaths.value;
+      
+    };
+    
+
+  </script>
+
+  
+
+  <!-- <script>
+     
+    // Method 3 - Using .then and .catch
+
+    fetch('https://covid19.mathdro.id/api')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            appendData(data);
+        })
+        .catch(function (err) {
+            console.log('error: ' + err);
+        });
+    function appendData(data) {
+        
+        document.getElementById("confirmed").innerHTML = data.deaths.value;
+        console.log(data.confirmed);
+        console.log(data.recovered);
+        console.log(data.deaths)
+    }
+  </script> -->
+
+
+
+</head>
+
+<body style="text-align: center;">
+  <h1>Know the Covid Data</h1>
+   <button onClick="getRecipies()">Get Covid Stats</button> 
+  <br><br>
+  <div>
+  <h3>Confirmed - </h3> <p id="confirmed"></p>
+  <h3>Recovered - </h3><p id="recovered"></p>
+   <h3>Deaths- </h3><p id="deaths"></p>
+  </div>
+
+  
+
+
+</body>
+
+</html>
